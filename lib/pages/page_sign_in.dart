@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unused_element
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unused_element, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -136,7 +136,9 @@ class SignInPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 30),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
           child: Text(
             'Sign In',
             style: primaryTextMedium.copyWith(fontSize: 16),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unused_element
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unused_element, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -237,7 +237,9 @@ class SignUpPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 30),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: Text(
             'Sign Up',
             style: primaryTextMedium.copyWith(fontSize: 16),
@@ -262,7 +264,9 @@ class SignUpPage extends StatelessWidget {
               style: thirdTextReguler.copyWith(fontSize: 12),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: Text(
                   'Sign In',
                   style: GoogleFonts.poppins(

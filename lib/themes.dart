@@ -7,12 +7,18 @@ Color primaryColorPurple = Color(0xff6C5ECF);
 Color secondaryColorGreen = Color(0xff38ABBE);
 Color alertColorRed = Color(0xffED6363);
 Color priceColorBlue = Color(0xff2C96F1);
+Color notActive = Color(0xff808191);
 Color bgColorBlack1 = Color(0xff1F1D2B);
 Color bgColorBlack2 = Color(0xff2B2937);
 Color bgColorBlack3 = Color(0xff242231);
+Color bgColorBlack4 = Color(0xff252836);
+Color bgColorPurpleDark2 = Color(0xff2B2844);
 Color primaryTextColorWhite = Color(0xffE1E1E1);
 Color secondaryTextColorGrey = Color(0xff999999);
 Color thirdTextColorDarkGrey = Color(0xff504F5E);
+Color fourthTextColorBlack = Colors.black;
+Color transaparant = Colors.transparent;
+Color cardColorWhite = Color(0xffECEDEF);
 
 TextStyle primaryTextLight = GoogleFonts.poppins(
   color: primaryTextColorWhite,
@@ -81,6 +87,26 @@ TextStyle thirdTextSemiBold = GoogleFonts.poppins(
 
 TextStyle thirdTextBold = GoogleFonts.poppins(
   color: thirdTextColorDarkGrey,
+  fontWeight: bold,
+);
+
+TextStyle fourthTextReguler = GoogleFonts.poppins(
+  color: fourthTextColorBlack,
+  fontWeight: reguler,
+);
+
+TextStyle fourthTextMedium = GoogleFonts.poppins(
+  color: fourthTextColorBlack,
+  fontWeight: medium,
+);
+
+TextStyle fourthTextSemiBold = GoogleFonts.poppins(
+  color: fourthTextColorBlack,
+  fontWeight: semiBold,
+);
+
+TextStyle fourthTextBold = GoogleFonts.poppins(
+  color: fourthTextColorBlack,
   fontWeight: bold,
 );
 
