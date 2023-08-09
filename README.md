@@ -1,16 +1,5 @@
-# shamo_flutter
+# Shoe Store E-Commerce App - Flutter Case Study
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This repository serves as a documentation of my journey in building a fully functional E-Commerce app for a shoe store using Flutter, a versatile framework for crafting natively compiled applications for mobile, web, and desktop from a single codebase. The app demonstrates various aspects of modern app development, from user interface design to state management and integration with APIs.
