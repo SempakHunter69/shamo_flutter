@@ -54,7 +54,10 @@ class CheckOutSuccessPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width - (2 * 90),
                 height: 45,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
+                  },
                   child: Text(
                     'Order Other Shoes',
                     style: primaryTextMedium.copyWith(fontSize: 16),
