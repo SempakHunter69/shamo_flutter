@@ -12,6 +12,7 @@ Color bgColorBlack1 = Color(0xff1F1D2B);
 Color bgColorBlack2 = Color(0xff2B2937);
 Color bgColorBlack3 = Color(0xff242231);
 Color bgColorBlack4 = Color(0xff252836);
+Color bgColorBlack5 = Color(0xff39374B);
 Color bgColorPurpleDark2 = Color(0xff2B2844);
 Color primaryTextColorWhite = Color(0xffE1E1E1);
 Color secondaryTextColorGrey = Color(0xff999999);
