@@ -2,13 +2,60 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo_flutter/providers/provider_auth.dart';
 import 'package:shamo_flutter/themes.dart';
+import 'package:shamo_flutter/widgets/widget_loading_button.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignUpPage extends StatefulWidget {
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController(text: '');
+
+  TextEditingController usernameController = TextEditingController(text: '');
+
+  TextEditingController emailController = TextEditingController(text: '');
+
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    handleSignUp() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.register(
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: alertColorRed,
+            content: Text(
+              'Registration Failed, Try Again',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+
+      setState(() {
+        isLoading = false;
+      });
+    }
+
     Widget header() {
       return Container(
         child: Column(
@@ -66,6 +113,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextReguler,
+                        controller: nameController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your full name',
                           hintStyle: thirdTextReguler,
@@ -115,6 +163,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextReguler,
+                        controller: usernameController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your username',
                           hintStyle: thirdTextReguler,
@@ -164,6 +213,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextReguler,
+                        controller: emailController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your email address',
                           hintStyle: thirdTextReguler,
@@ -216,6 +266,7 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         style: primaryTextReguler,
                         obscureText: true,
+                        controller: passwordController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Password',
                           hintStyle: thirdTextReguler,
@@ -237,9 +288,7 @@ class SignUpPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 30),
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: handleSignUp,
           child: Text(
             'Sign Up',
             style: primaryTextMedium.copyWith(fontSize: 16),
@@ -296,7 +345,7 @@ class SignUpPage extends StatelessWidget {
               usernameInput(),
               emailInput(),
               passwordInput(),
-              signUpButton(),
+              isLoading ? LoadingButton() : signUpButton(),
               Spacer(),
               footer(),
             ],

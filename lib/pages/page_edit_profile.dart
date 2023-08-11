@@ -1,13 +1,20 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_flutter/themes.dart';
+
+import '../models/model_user.dart';
+import '../providers/provider_auth.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: bgColorBlack1,
@@ -51,7 +58,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextReguler.copyWith(fontSize: 16),
               decoration: InputDecoration(
-                hintText: 'Reyhan',
+                hintText: '${user.name}',
                 hintStyle: primaryTextReguler.copyWith(fontSize: 16),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -78,7 +85,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextReguler.copyWith(fontSize: 16),
               decoration: InputDecoration(
-                hintText: '@semfvck69',
+                hintText: '@${user.username}',
                 hintStyle: primaryTextReguler.copyWith(fontSize: 16),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -105,7 +112,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextReguler.copyWith(fontSize: 16),
               decoration: InputDecoration(
-                hintText: 'semvakhunter69@gmail.com',
+                hintText: '${user.email}',
                 hintStyle: primaryTextReguler.copyWith(fontSize: 16),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -133,8 +140,8 @@ class EditProfile extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(
-                    'assets/image_profile.png',
+                  image: NetworkImage(
+                    '${user.profilePhotoUrl}',
                   ),
                 ),
               ),

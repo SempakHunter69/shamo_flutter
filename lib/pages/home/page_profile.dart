@@ -1,13 +1,20 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_flutter/themes.dart';
+
+import '../../models/model_user.dart';
+import '../../providers/provider_auth.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget header() {
       return AppBar(
         backgroundColor: bgColorBlack4,
@@ -20,8 +27,8 @@ class ProfilePage extends StatelessWidget {
               child: Row(
                 children: [
                   ClipOval(
-                    child: Image.asset(
-                      'assets/image_profile.png',
+                    child: Image.network(
+                      '${user.profilePhotoUrl}',
                       width: 64,
                     ),
                   ),
@@ -34,12 +41,12 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Reyhan',
+                          '${user.name}',
                           style: primaryTextSemiBold.copyWith(fontSize: 24),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          '@semfvck69',
+                          '@${user.username}',
                           style: thirdTextReguler.copyWith(fontSize: 16),
                           overflow: TextOverflow.ellipsis,
                         ),
