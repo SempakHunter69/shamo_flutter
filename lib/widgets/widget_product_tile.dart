@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:shamo_flutter/models/model_product.dart';
 import 'package:shamo_flutter/themes.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({super.key});
+  final ProductModel product;
+  ProductTile(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class ProductTile extends StatelessWidget {
               height: 120,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/image_shoes.png'),
+                  image: NetworkImage(product.galleries[0].url),
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -36,24 +38,25 @@ class ProductTile extends StatelessWidget {
                     height: 11,
                   ),
                   Text(
-                    'Football',
+                    product.category.name,
                     style: thirdTextReguler.copyWith(fontSize: 12),
                   ),
                   SizedBox(
                     height: 6,
                   ),
                   Text(
-                    'Predator 20.3 Firm Ground',
+                    product.name,
                     overflow: TextOverflow.ellipsis,
                     style: primaryTextSemiBold.copyWith(
                       fontSize: 16,
                     ),
+                    maxLines: 1,
                   ),
                   SizedBox(
                     height: 6,
                   ),
                   Text(
-                    '\$57,32',
+                    '\$${product.price}',
                     style: primaryTextMedium.copyWith(color: priceColorBlue),
                   )
                 ],
